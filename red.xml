@@ -3,7 +3,7 @@
     <configVersion>2</configVersion>
     <robotExecEnvironment path="C:/Program Files (x86)/Python" interpreter="Python"/>
     <relativeTo>WORKSPACE</relativeTo>
-    <referencedLibrary type="PYTHON" name="SeleniumLibrary" path="C:/Users/akulkarni/AppData/Roaming/Python/Python38/site-packages/SeleniumLibrary/__init__.py" dynamic="false"/>
+    <referencedLibrary type="PYTHON" name="SeleniumLibrary" path="C:/Users/akulkarni/AppData/Roaming/Python/Python38/site-packages/SeleniumLibrary/__init__.py" dynamic="true"/>
     <pythonpath/>
     <classpath/>
     <excludedForValidation/>

@@ -14,7 +14,7 @@ Default Tags    SANITY
 
 MyFirstTest
      [Tags]    SMOKE     # overrides default tags
-    Log    This test was executed by %{username} on %{os}..    #env variables
+    Log    This test was executed by {username} on {os}..    #env variables
     Log    Test name is ${SUITE NAME} and result is ${PREV_TEST_STATUS}  # built in variables
     
     
@@ -26,6 +26,13 @@ FirstSeleniumCase
     Press Keys    None      ENTER
     #Click Button    name=btnK          
     Close Browser
+
+
+
+
+
+    
+
     
 SampleLoginCase
     [Documentation]    This is sample login test
@@ -36,6 +43,7 @@ SampleLoginCase
     Click Element    link=Logout 
     Title Should Be    &{LOGIN_DATA}[title]           
     Close Browser
+
     
 
 *** Variables ***
@@ -45,7 +53,7 @@ ${URL}     https://opensource-demo.orangehrmlive.com/  # SCALAR
 
 *** Keywords ***
 # Club built-in keyword actions. Enable reuse of same steps in multiple test cases
-LOGINACTION                                                 
+LOGINACTION
     Input Text    id=txtUsername    @{CREDENTIALS}[0]
     Input Password    id=txtPassword    @{CREDENTIALS}[1]
     Click Button    name=Submit 
