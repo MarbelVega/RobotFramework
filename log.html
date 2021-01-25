@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 3.2.1 (Python 3.8.3 on win32)" name="Generator">
+<meta content="Robot Framework 3.2.2 (Python 3.8.3 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all" type="text/css">
 /* Generic and misc styles */
@@ -579,11 +579,18 @@ function expandSuite(suite) {
     else
         expandCriticalFailed(suite);
 }
-function expandElement(item) {
+function expandElement(item, retryCount) {
+    retryCount = typeof retryCount !== 'undefined' ? retryCount : 3;
     var element = $('#' + item.id);
     var children = element.children('.children');
     // .css is faster than .show and .show w/ callback is terribly slow
     children.css({'display': 'block'});
+    // in rare cases on large logs concurrent expanding fails => retry
+    if (children.css('display') != 'block' && retryCount > 0) {
+        console.debug('expandElement '+item.id+' failed! planning retry...');
+        setTimeout(function() { expandElement(item, retryCount-1); }, 0);
+        return;
+    }
     populateChildren(item.id, children, item.childrenNames);
     element.children('.element-header').removeClass('closed');
 }
@@ -1743,25 +1750,25 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,20624],[],[[4,0,1,0,[5],[1,200,2],[[1,6,7,0,8,9,0,0,[1,200,0],[],[[200,2,9]]],[0,6,7,0,8,10,0,0,[1,201,0],[],[[201,2,11]]],[0,6,7,0,8,12,0,0,[1,201,0],[],[[201,2,13]]],[2,6,7,0,8,14,0,0,[1,202,0],[],[[202,2,14]]]]],[15,0,1,0,[],[1,203,10263],[[1,6,7,0,8,9,0,0,[1,203,0],[],[[203,2,9]]],[0,16,7,0,17,18,0,0,[1,204,0],[],[[204,2,19]]],[0,20,21,0,22,23,0,0,[1,204,5595],[],[[205,2,24]]],[0,25,21,0,26,27,0,0,[1,5800,1],[],[]],[0,28,21,0,29,30,0,0,[1,5802,98],[],[[5802,2,31]]],[0,32,21,0,33,34,0,0,[1,5900,2401],[],[[5901,2,35],[5901,2,36],[5901,2,37]]],[0,38,21,0,39,0,0,0,[1,8302,2160],[],[]],[2,6,7,0,8,14,0,0,[1,10464,1],[],[[10465,2,14]]]]],[40,0,1,41,[18],[1,10470,10152],[[1,6,7,0,8,9,0,0,[1,10472,1],[],[[10473,2,9]]],[0,20,21,0,22,42,0,0,[1,10474,4115],[],[[10475,2,43]]],[0,25,21,0,26,27,0,0,[1,14589,1],[],[]],[0,44,0,0,0,0,0,0,[1,14591,2168],[[0,28,21,0,29,45,0,0,[1,14591,94],[],[[14591,3,47],[14593,2,48]]],[0,49,21,0,50,51,0,0,[1,14685,109],[],[[14685,3,53],[14686,2,54],[14732,2,55],[14794,2,56]]],[0,57,21,0,58,59,0,0,[1,14794,1965],[],[[14794,2,60]]]],[]],[0,61,21,0,62,63,0,0,[1,16759,72],[],[[16760,2,64]]],[0,61,21,0,62,65,0,0,[1,16831,897],[],[[16831,2,66]]],[0,67,21,0,68,69,0,0,[1,17728,11],[],[[17729,3,71],[17739,2,72]]],[0,38,21,0,39,0,0,0,[1,17740,2882],[],[]],[2,6,7,0,8,14,0,0,[1,20622,0],[],[[20622,2,14]]]]]],[[1,6,7,0,8,73,0,0,[1,199,1],[],[[200,2,73]]],[2,6,7,0,8,74,0,0,[1,20623,1],[],[[20624,2,74]]]],[3,3,3,3]];
+window.output["suite"] = [1,2,3,0,[],[0,0,7039],[],[[4,0,1,0,[5],[1,275,4],[[1,6,7,0,8,9,0,0,[1,276,0],[],[[276,2,9]]],[0,6,7,0,8,10,0,0,[1,276,1],[],[[277,2,10]]],[0,6,7,0,8,11,0,0,[1,277,0],[],[[277,2,12]]],[2,6,7,0,8,13,0,0,[1,278,0],[],[[278,2,13]]]]],[14,0,1,0,[15],[0,280,6756,16],[[1,6,7,0,8,9,0,0,[1,280,0],[],[[280,2,9]]],[0,17,18,0,0,0,19,0,[1,281,342],[],[[326,2,20],[326,2,21],[621,2,22],[622,2,23],[623,2,24]]],[0,6,7,0,8,19,0,0,[1,624,1],[],[[625,2,25]]],[0,26,27,0,28,29,0,0,[1,626,6408],[],[[627,2,30]]],[0,31,7,0,32,33,34,0,[0,7035,0],[],[[7035,5,16]]],[2,6,7,0,8,13,0,0,[1,7036,0],[],[[7036,2,13]]]]]],[[1,6,7,0,8,35,0,0,[1,275,0],[],[[275,2,35]]],[2,6,7,0,8,36,0,0,[1,7038,1],[],[[7039,2,36]]]],[2,1,2,1]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Test","*C:\\Workspaces\\RobotTutorial\\Test.robot","*Test.robot","*MyFirstTest","*SMOKE","*Log","*BuiltIn","*<p>Logs the given message with the given level.\x3c/p>","*I'm inside test setup","*This test was executed by %{username} on %{os}..","*This test was executed by akulkarni on Windows_NT..","*Test name is ${SUITE NAME} and result is ${PREV_TEST_STATUS}","*Test name is Test and result is ","*I'm inside test teardown","*FirstSeleniumCase","*Remove Tags","*<p>Removes given <code>tags\x3c/code> from the current test or all tests in a suite.\x3c/p>","*SANITY","*Removed tag 'SANITY'.","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*<a href=\"https://google.com\">https://google.com\x3c/a>, chrome","*Opening browser 'chrome' to base url '<a href=\"https://google.com\">https://google.com\x3c/a>'.","*Set Browser Implicit Wait","*<p>Sets the implicit wait value used by Selenium.\x3c/p>","*5","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*name=q, Milan","*Typing text 'Milan' into text field 'name=q'.","*Press Keys","*<p>Simulates the user pressing key(s) to an element or on the active browser.\x3c/p>","*None, ENTER","*Sending key(s) ('ENTER',) to page.","*Pressing special key ENTER to browser.","*Releasing special key ENTER.","*Close Browser","*<p>Closes the current browser.\x3c/p>","*SampleLoginCase","*<p>This is sample login test\x3c/p>","*${URL}, chrome","*Opening browser 'chrome' to base url '<a href=\"https://opensource-demo.orangehrmlive.com/\">https://opensource-demo.orangehrmlive.com/\x3c/a>'.","*LOGINACTION","*id=txtUsername, @{CREDENTIALS}[0]","*s1-t3-k4-k1","*Accessing variable items using '@{CREDENTIALS}[0]' syntax is deprecated. Use '${CREDENTIALS}[0]' instead.","*Typing text 'Admin' into text field 'id=txtUsername'.","*Input Password","*<p>Types the given password into the text field identified by <code>locator\x3c/code>.\x3c/p>","*id=txtPassword, @{CREDENTIALS}[1]","*s1-t3-k4-k2","*Accessing variable items using '@{CREDENTIALS}[1]' syntax is deprecated. Use '${CREDENTIALS}[1]' instead.","*Typing password into text field 'id=txtPassword'.","*Temporally setting log level to: NONE","*Log level changed from NONE to INFO.","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*name=Submit","*Clicking button 'name=Submit'.","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*id=welcome","*Clicking element 'id=welcome'.","*link=Logout","*Clicking element 'link=Logout'.","*Title Should Be","*<p>Verifies that the current page title equals <code>title\x3c/code>.\x3c/p>","*&amp;{LOGIN_DATA}[title]","*s1-t3-k7","*Accessing variable items using '&amp;{LOGIN_DATA}[title]' syntax is deprecated. Use '${LOGIN_DATA}[title]' instead.","*Page title is 'OrangeHRM'.","*I'm inside test suite setup","*I'm inside test suite teardown"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Test","*C:\\Workspaces\\RobotTutorial\\Test.robot","*Test.robot","*MyFirstTest","*SMOKE","*Log","*BuiltIn","*<p>Logs the given message with the given level.\x3c/p>","*I'm inside test setup","*This test was executed by {username} on {os}..","*Test name is ${SUITE NAME} and result is ${PREV_TEST_STATUS}","*Test name is Test and result is ","*I'm inside test teardown","*Independant Login Case","*SANITY","*Evaluating expression '(\"\"user\"\", \"\"pass\"\",)' failed: SyntaxError: invalid syntax (&lt;string&gt;, line 1)","*Chromedriver Path","*webdrivermgr","*${driver}","*Current google-chrome version is 86.0.4240","*Get LATEST driver version for 86.0.4240","*Driver [C:\\Users\\akulkarni.AUSTINPDC\\.wdm\\drivers\\chromedriver\\win32\\86.0.4240.22\\chromedriver.exe] found in cache","*[WDM] - Current google-chrome version is 86.0.4240\n[WDM] - Get LATEST driver version for 86.0.4240\n[WDM] - Driver [C:\\Users\\akulkarni.AUSTINPDC\\.wdm\\drivers\\chromedriver\\win32\\86.0.4240.22\\chromedriver.exe] found in cache","*${driver} = C:\\Users\\akulkarni.AUSTINPDC\\.wdm\\drivers\\chromedriver\\win32\\86.0.4240.22\\chromedriver.exe","*C:\\Users\\akulkarni.AUSTINPDC\\.wdm\\drivers\\chromedriver\\win32\\86.0.4240.22\\chromedriver.exe","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*<a href=\"https://google.com\">https://google.com\x3c/a>, chrome, executable_path=${driver}","*Opening browser 'chrome' to base url '<a href=\"https://google.com\">https://google.com\x3c/a>'.","*Evaluate","*<p>Evaluates the given expression in Python and returns the result.\x3c/p>","*(\"\"user\"\", \"\"pass\"\",)","*${work}","*I'm inside test suite setup","*I'm inside test suite teardown"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:20","fail":0,"label":"Critical Tests","pass":3},{"elapsed":"00:00:20","fail":0,"label":"All Tests","pass":3}],[{"elapsed":"00:00:10","fail":0,"label":"SANITY","pass":1},{"elapsed":"00:00:00","fail":0,"label":"SMOKE","pass":1}],[{"elapsed":"00:00:21","fail":0,"id":"s1","label":"Test","name":"Test","pass":3}]];
+window.output["stats"] = [[{"elapsed":"00:00:07","fail":1,"label":"Critical Tests","pass":1},{"elapsed":"00:00:07","fail":1,"label":"All Tests","pass":1}],[{"elapsed":"00:00:07","fail":1,"label":"SANITY","pass":0},{"elapsed":"00:00:00","fail":0,"label":"SMOKE","pass":1}],[{"elapsed":"00:00:07","fail":1,"id":"s1","label":"Test","name":"Test","pass":1}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [[14591,3,47,46],[14685,3,53,52],[17729,3,71,70]];
+window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1597380934456;
+window.output["baseMillis"] = 1604952423915;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 20642;
+window.output["generated"] = 7048;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -1798,12 +1805,12 @@ $(document).ready(function() {
     addErrors();
     addExecutionLog(topsuite);
     addLogLevelSelector(window.settings['minLevel'], window.settings['defaultLevel']);
-    loadAndExpandElementIds(window.output['expand_keywords']);
     if (window.location.hash) {
         makeElementVisible(window.location.hash.substring(1));
     } else {
         expandSuite(topsuite);
     }
+    setTimeout(function () { loadAndExpandElementIds(window.output['expand_keywords']); }, 100);
 });
 
 function addLogLevelSelector(minLevel, defaultLevel) {
