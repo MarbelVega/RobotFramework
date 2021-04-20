@@ -22,14 +22,14 @@ MyFirstTest
     Log    Test name is ${SUITE NAME} and result is ${PREV_TEST_STATUS}  # built in variables
     
     
-#FirstSeleniumCase
-#    Remove Tags    SANITY
-#    Open Browser    https://google.com    chrome
-#    Set Browser Implicit Wait    5
-#    Input Text    name=q    Milan
-#    Press Keys    None      ENTER
-#    #Click Button    name=btnK
-#    Close Browser
+FirstSeleniumCase
+    Remove Tags    SANITY
+    Open Browser    https://google.com    headlesschrome
+    Set Browser Implicit Wait    5
+    Input Text    name=q    Milan
+    Press Keys    None      ENTER
+    #Click Button    name=btnK
+    Close Browser
 #
 #
 #
@@ -43,13 +43,13 @@ MyFirstTest
 #    Title Should Be    &{LOGIN_DATA}[title]
 #    Close Browser
 
-Independant Login Case
-    ${driver}=      chromedriver path
-    log    ${driver}
-    Open Browser      https://google.com    chrome  executable_path=${driver}
-    ${work}=    Evaluate    (""user"", ""pass"",)
-    log    ${work}
-    INDEPENDANT KEYWORDS
+#Independant Login Case
+#    ${driver}=      chromedriver path
+#    log    ${driver}
+#    Open Browser      https://google.com    chrome  executable_path=${driver}
+#    ${work}=    Evaluate    (""user"", ""pass"",)
+#    log    ${work}
+#    INDEPENDANT KEYWORDS
 
     
 
