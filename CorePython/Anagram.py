@@ -16,8 +16,8 @@ def checkAnagram(inputStr1, inputStr2):
     return flag
 
 
-inputStr1 = "Mother In Lawn";
-inputStr2 = "Hitler Womann";
+inputStr1 = "Mother In Lawn"
+inputStr2 = "Hitler Womann"
 print("ANAGRAM", checkAnagram(inputStr1, inputStr2))
 
 # shortest would be if sorted(inputstr1) == sorted(inputstr2)

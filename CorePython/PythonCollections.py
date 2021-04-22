@@ -1,8 +1,16 @@
+from array import array
 # TYPES OF COLLECTIONS
-# List      []       ordered | indexed | changeable | duplicates
+# Array stored elements of same type
+# List      []       ordered | indexed | changeable | duplicates | can store diff types
 # Tuple    ()       ordered | indexed | unchangeable | duplicates
 # Set       {}       unordered | unindexed | no duplicates
 # Dictionary  {K:V}          unordered | changeable | indexed | no duplicates
+
+# ---------------------------Array------------------------------------------------------------------#
+
+num = array('d')
+num.append(98)
+print(num)           # num.append('AMIT') not allowed
 
 # --------------------------------LIST---------------------------------------------------------------#
 
@@ -24,10 +32,10 @@ print("INDEX OF PEAR-", fruits.index("pear"), "NEGATIVE INDEX-", fruits[-1])
 print("--------------------------------TUPLE---------------------------------------------------------------")
 
 my_tuple = ("Banana", (1, 2, 3), ["Tokyo", "London"])
-my_tuple[3] = "Cherry"
+# my_tuple[3] = "Cherry" not allowed
 # del my_tuple[2]           cannot add/remove items in tuple but can delete entire tuple
 my_tuple[2][1] = "New York"
-print(my_tuple)  # since list is mutable we can change list items in tuple
+print(my_tuple[1])  # since list is mutable we can change list items in tuple
 print("Banana" in my_tuple)  # contains check
 
 print("--------------------------------SET---------------------------------------------------------------")

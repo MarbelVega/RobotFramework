@@ -8,14 +8,13 @@ variable_int = int(variable)  # casting
 print("Casting ", variable_int)
 String = "CONCATENATION"      # data type is automagically determined
 print("Data type is " + String, type(String))  # + can concat str and add numbers
-print("Enter your name")
-name = input()  # taking user input, always treated as string
+name = input("Enter your name")  # taking user input, always treated as string
 print("Hello {}. how are ya?".format(name).capitalize())
 f'Hello, {name}'   # variables inside braces are replaced with values
 print (11 + 2.5)
 
 # ------------ FOR and IF-ELSE--------------------------------------------------------------------------------#
-print(String[2:4], String.lower(), String.split("T"))  # String functions
+print(String[2:4], String.lower(), String.split("T"))  # String functions ,4th element not included
 arr = []
 for i in range(variable_int):
     if i % 5 == 0:
