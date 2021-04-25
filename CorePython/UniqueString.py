@@ -1,5 +1,4 @@
 # Check if string is uniq until given length
-from locust import HttpUser,task
 
 str = "hkbfaiorinfoee#inlksgdl74bldk38"
 no_places = 8

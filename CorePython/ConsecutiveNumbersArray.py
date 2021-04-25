@@ -11,12 +11,12 @@ for x in arr:
     up = x+1
     while (up in arr_set):
         count = count + 1
-        arr_set.remove(up)
+        #arr_set.remove(up)
         up = up + 1
     down = x-1
     while(down in arr_set):
         count = count + 1
-        arr_set.remove(down)
+        #arr_set.remove(down)
         down = down - 1
 
     result = max(result,count)

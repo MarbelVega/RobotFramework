@@ -1,18 +1,28 @@
 # Check if string is uniq until given length
-from locust import HttpUser,task
 
 str = "how are you amit? fine ? "
 no_places = 8
 
+# replace substring
 print(str.replace("amit","intellij"))
-i = str.index("you")
+i = str.index("you")               # can use str.find also but it errors if not found
 print(str[0:i]+"we"+ str[i+3:])       # without using replace
 
-# find no of occurances of a substring
+# find no of occurances of a substring or char
+print(len(str.split(" "))-1, '=', str.count(" "))
 
-print(len(str.split(" "))-1)
+# strip last 2 char
+print(str.rstrip("? "))
 
-string = "acbbxyz"
+string = "amazonm"
+
+# first non-repeating char
+
+for c in string:
+    if string.count(c) == 1:
+        print("First unique char is " + c)
+        break
+
 
 seen = {}
 maximum_length = 0

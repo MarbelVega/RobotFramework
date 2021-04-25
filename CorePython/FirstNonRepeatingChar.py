@@ -6,10 +6,11 @@ from collections import Counter
 inputStr = "ammazon";
 count = Counter(inputStr)
 print(count)
-print(reversed(inputStr))
-for e in count:
-    if count[e] == 1:
+# get key from value
+for e in count.keys():
+    if count.get(e) == 1:
         print(e)
         break
 
+# count.items is entry set
 

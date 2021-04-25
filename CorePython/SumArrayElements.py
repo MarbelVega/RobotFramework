@@ -2,7 +2,7 @@
 # For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.  Handle cases like 20*/
 
 k = 17
-my_list = [10, 15, 3, 7]
+my_list = [10, 15, 3, 7, 2]
 
 for i in my_list:
     diff = k - i
@@ -11,11 +11,3 @@ for i in my_list:
         my_list.remove(diff)                                      # avoid getting 2 msgs for pair found
 
 
-
-
-try:
-    c = 1/0                                           # or raise Exception
-except:
-    print("Exception raised")
-finally:
-    print("Closing")

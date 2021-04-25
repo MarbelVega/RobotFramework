@@ -13,10 +13,10 @@ num.append(98)
 print(num)           # num.append('AMIT') not allowed
 
 # --------------------------------LIST---------------------------------------------------------------#
-
+numbers = list(range(1,21,1))
 fruits = ["apple", "mango", "pear", "grape"]
 for val in fruits:
-    print()
+    print(val)
 else:
     print("No fruits")  # for else executed at end of loop
 print(set(fruits))
@@ -26,8 +26,9 @@ print(fruits)
 fruits.insert(2, "pineapple")  # elements after index shifted right
 fruits.remove("mango")  # remove by value
 del fruits[0]  # remove by index
+fruits.sort()
 print(fruits)
-print("INDEX OF PEAR-", fruits.index("pear"), "NEGATIVE INDEX-", fruits[-1])
+print("INDEX OF PEAR", fruits.index("pear"), "NEGATIVE INDEX-", fruits[-1])
 
 print("--------------------------------TUPLE---------------------------------------------------------------")
 
@@ -36,7 +37,7 @@ my_tuple = ("Banana", (1, 2, 3), ["Tokyo", "London"])
 # del my_tuple[2]           cannot add/remove items in tuple but can delete entire tuple
 my_tuple[2][1] = "New York"
 print(my_tuple[1])  # since list is mutable we can change list items in tuple
-print("Banana" in my_tuple)  # contains check
+print("Banana" in my_tuple )  # contains check
 
 print("--------------------------------SET---------------------------------------------------------------")
 
@@ -59,6 +60,7 @@ my_dict = {
     "name": "giraffe",
     "age": 10
 }
+my_dict.update(age = 2)  # add if not present, can also update from another dict
 
 print(my_dict.get("name"))
 print(my_dict.values())

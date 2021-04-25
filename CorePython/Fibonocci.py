@@ -13,6 +13,6 @@ def fib(num):
 my_list = []
 for i in range(13):
     my_list.append(fib(i))
-print(my_list , my_list[len(my_list)-1])
+print(my_list , my_list[-1])
 
 

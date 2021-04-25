@@ -30,6 +30,7 @@ cat1 = Cat('Andy', 2)  # cat1 = Cat() throws error since no args
 cat2 = Cat('Phoebe')
 print(cat1.info())  # cat1.info is Cat.info(cat1); need self since receiver class shd b explicit
 cat2.make_sound("Meow")
+print(cat2.age)
 del cat2.age    # references can be deleted
 print(cat2.name)
 

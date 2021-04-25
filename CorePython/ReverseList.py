@@ -3,6 +3,7 @@ slice_obj = slice(1, len(py_string) - 1, 1)  # start(def=0), stop(def=length), s
 print(py_string[slice_obj])
 
 print(py_string[2:] + py_string[0:2])  # shift left by 2 places
+print("Reverse string - ", py_string[::-1])
 
 arry = [101, "%", "RED", "AIVA"];
 print(arry[::-1])  # ::-1 reverses list

@@ -13,10 +13,9 @@ arr = [
 noOfColumns = len(arr[0])
 noOfRows = len(arr)
 print("Rows", noOfRows, "Columns", noOfColumns)
-print('ASS' in 'MASS')
 
 
-def searchWord(arr, stringSearchSequence, noOfRows, noOfColumns):
+def searchWord(arr, stringSearchSequence, noOfRows, noOfColumns = 4):
     flag = False
     for row in arr:
         rowWord = "".join(row)
@@ -27,12 +26,16 @@ def searchWord(arr, stringSearchSequence, noOfRows, noOfColumns):
     if flag != True:
         columnWord = ""
         a2 = zip(*arr)
-        print("Zip ", a2)
+        print("Zip ", tuple(a2))
+        for ele in tuple(a2):
+            print(ele)
+            columnWord = columnWord.join(ele)
     return flag
 
 
 
 
 for stringSearchSequence in words:
-    flag = searchWord(arr, stringSearchSequence, noOfRows, noOfColumns )
+    # note noOfColumns is not passed since its defaulted to 4
+    flag = searchWord(arr, stringSearchSequence, noOfRows)
     print("search successful") if flag == True else print ("search unsuccessful")
