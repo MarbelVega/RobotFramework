@@ -25,3 +25,4 @@ for i in range(variable_int):
 print(arr)
 print("MAX ELEMENT", max(arr), "ARRAY LENGTH", len(arr))
 
+print('ASCII Code -', ord('c'))  # chr(number) to get back

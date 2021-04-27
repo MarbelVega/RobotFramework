@@ -1,19 +1,15 @@
-from array import array
-# TYPES OF COLLECTIONS
-# Array stored elements of same type
+
+# TYPES OF BUILT-IN DATA STRUCTURES IN PYTHON
 # List      []       ordered | indexed | changeable | duplicates | can store diff types
 # Tuple    ()       ordered | indexed | unchangeable | duplicates
 # Set       {}       unordered | unindexed | no duplicates
 # Dictionary  {K:V}          unordered | changeable | indexed | no duplicates
+# OrderedDict - Remember insertion order
 
-# ---------------------------Array------------------------------------------------------------------#
-
-num = array('d')
-num.append(98)
-print(num)           # num.append('AMIT') not allowed
 
 # --------------------------------LIST---------------------------------------------------------------#
-numbers = list(range(1,21,1))
+numbers = list(range(1,21,1))      # list of numbers 1-21
+number = [False] * 10     # list of 10 elements
 fruits = ["apple", "mango", "pear", "grape"]
 for val in fruits:
     print(val)
