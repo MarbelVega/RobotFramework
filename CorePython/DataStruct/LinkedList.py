@@ -36,6 +36,12 @@ class LinkedList(object):
             temp = temp.next_node
         return temp
 
+    def print(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next_node
+
     def delete(self, nodeData, node):
         prv = None
         temp = self.head
@@ -52,3 +58,63 @@ class LinkedList(object):
         node.data = temp.data
         node.next_node = temp.next_node
         temp = None
+
+    def addTwoLists(self, first, second):
+        prev = None
+        temp = None
+        carry = 0
+
+        # While both list exists
+        while(first is not None or second is not None):
+            fdata = sdata = 0
+
+            # Move first and second pointers to next nodes
+            if first is not None:
+                fdata = first.data
+                first = first.next_node
+            if second is not None:
+                sdata = second.data
+                second = second.next_node
+
+            Sum = carry + fdata + sdata
+
+            # update carry for next calculation
+            carry = 1 if Sum >= 10 else 0
+
+            # update sum if it is greater than 10
+            Sum = Sum if Sum < 10 else Sum % 10
+
+            # Create a new node with sum as data
+            temp = Node(Sum)
+
+            # if this is the first node then set it as head of resultant list
+
+            if self.head is None:
+                self.head = temp
+            else:
+                prev.next_node = temp
+
+            # Set prev for next insertion
+            prev = temp
+
+        if carry > 0:
+            temp.next_node = Node(carry)
+
+
+# Given two numbers represented by two lists, write a function that returns the sum list
+
+first = LinkedList()
+second = LinkedList()
+first.insert(6)       # 9->4->6 = 649
+first.insert(4)
+first.insert(9)
+print("First Node \n")
+first.print()
+second.insert(5)      # 7->5 = 57
+second.insert(7)
+print("Second Node \n")
+second.print()
+res = LinkedList()
+res.addTwoLists(first.head, second.head)
+print("Sum Node \n")
+res.print()

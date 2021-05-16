@@ -14,16 +14,13 @@ print(len(str.split(" "))-1, '=', str.count(" "))
 # strip last 2 char
 print(str.rstrip("? "))
 
-string = "amazonm"
-
-# first non-repeating char
-
-for c in string:
-    if string.count(c) == 1:
-        print("First unique char is " + c)
-        break
+'''
+Longest substring containing of unique chars = shortest substring containing all chars ?
+'''
 
 
+string1 = "amazonm"
+string = "aaab"
 seen = {}
 maximum_length = 0
 
@@ -42,4 +39,4 @@ for end in range(len(string)):
     seen[string[end]] = end
     maximum_length = max(maximum_length, end-start + 1)
 print(seen)
-print("Max length of uniq chars" , maximum_length)
+print("Longest Substring Without Repeating Characters" , maximum_length, string[start:end + 1])

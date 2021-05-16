@@ -14,3 +14,9 @@ for e in count.keys():
 
 # count.items is entry set
 
+# first non-repeating char
+
+for c in inputStr:
+    if inputStr.count(c) == 1:
+        print("First unique char is " + c)
+        break

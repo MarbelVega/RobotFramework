@@ -26,6 +26,8 @@ class theTest(HttpUser):
     min_wait = 500
     max_wait = 1500
 
+    host = "http://newtours.demoaut.com" # can be given in UI or cmdline as well
+
     creds =  {
         'accept': 'application/json',
         'x-compass-firm-id': '822',
@@ -33,7 +35,13 @@ class theTest(HttpUser):
         'x-compass-api-key': 'dbf97abb-6905-42c7-b645-f8941a225fe7'
     }
 
+# use task sequence for things in serial order
+
     @task
+    def launch_url(self):
+        self.client.get("/")
+
+    @task(1)                      # Enables tasks inside taskset class with weightage
     def paging_contacts(self):
         fr = 0
         while True:

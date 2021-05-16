@@ -1,6 +1,6 @@
 
 
-words = ("FOAM", "ASS");
+words = ("FOAM", "ASS", "ANNA");
 
 arr = [
     ['F', 'A', 'C', 'I'],
@@ -24,18 +24,19 @@ def searchWord(arr, stringSearchSequence, noOfRows, noOfColumns = 4):
             break
 
     if flag != True:
-        columnWord = ""
-        a2 = zip(*arr)
-        print("Zip ", tuple(a2))
-        for ele in tuple(a2):
-            print(ele)
-            columnWord = columnWord.join(ele)
+        # needs more than one iterables but * will unzip existing iterable
+        col_tuple = tuple(zip(*arr))
+        for ele in col_tuple:
+            columnWord = "".join(ele)
+            # print("\n", columnWord)
+            if stringSearchSequence in columnWord:
+                flag = True
+                break
     return flag
-
-
 
 
 for stringSearchSequence in words:
     # note noOfColumns is not passed since its defaulted to 4
     flag = searchWord(arr, stringSearchSequence, noOfRows)
+    print(stringSearchSequence)
     print("search successful") if flag == True else print ("search unsuccessful")

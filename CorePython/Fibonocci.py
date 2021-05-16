@@ -9,7 +9,7 @@ def fib(num):
 
     else:
         return (fib(num - 1) + fib(num - 2))
-        factorial = num * fib(num - 1)
+
 
 
 def fibfor(num):

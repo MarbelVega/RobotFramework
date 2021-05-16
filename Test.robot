@@ -1,7 +1,6 @@
 # https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
 
 
-
 *** Settings ***
 Library    SeleniumLibrary
 
@@ -56,7 +55,7 @@ FirstSeleniumCase
 *** Variables ***
 ${URL}     https://opensource-demo.orangehrmlive.com/  # SCALAR
 @{CREDENTIALS}     Admin    admin123  # LIST
-&{LOGIN_DATA}    title=OrangeHRM      # KEY_VALUE PAIRS
+${LOGIN_DATA}    title=OrangeHRM      # KEY_VALUE PAIRS
 ${host}
 
 *** Keywords ***

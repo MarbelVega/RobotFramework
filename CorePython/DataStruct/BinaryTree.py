@@ -29,9 +29,9 @@ class BinaryTree:
 
     def traverseInorder(self, root):                  # left-root-right
         if root is not None:
-            self.traversePostorder(root.left)
+            self.traverseInorder(root.left)
             print(root.data)
-            self.traversePostorder(root.right)
+            self.traverseInorder(root.right)
 
 
     def getSize(self, root):

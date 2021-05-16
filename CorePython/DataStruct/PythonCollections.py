@@ -34,7 +34,7 @@ my_tuple = ("Banana", (1, 2, 3), ["Tokyo", "London"])
 my_tuple[2][1] = "New York"
 print(my_tuple[1])  # since list is mutable we can change list items in tuple
 print("Banana" in my_tuple )  # contains check
-
+print(tuple(fruits))
 print("--------------------------------SET---------------------------------------------------------------")
 
 my_set = {"Chalk", "Duster", "Board", "pear"}  # unindexed so can't do set[0] etc

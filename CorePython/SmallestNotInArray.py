@@ -22,8 +22,13 @@ def solution(A):
             i = i + 1
     return i
 
-
+def alternate(A):
+    set1 = set(range(1,max(A) + 1,1))
+    set2 = set(A)
+    diff = set1 - set2
+    print(min(diff))
 
 A = [1, 3, 6, 4, 1, 2]
 smallest = solution(A)
 print(smallest)
+alternate(A)

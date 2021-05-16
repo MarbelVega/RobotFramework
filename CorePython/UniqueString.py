@@ -12,12 +12,3 @@ for i in range(no_places):
 
 print(my_set)
 print("STRING IS UNIQ UPTO GIVEN LENGTH" if len(my_set) == no_places  else "STRING NOT UNIQ UPTO GIVEN LENGTH")
-
-class inherit(HttpUser):
-
-    @task
-    def companydetails(self):
-
-            test_name = "CFO-BFFE Company Details"
-
-            r = self.client.get(f"/api/companydetails?companyId={company}", name=test_name, headers=headers )

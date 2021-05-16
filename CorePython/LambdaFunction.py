@@ -20,5 +20,7 @@ personnel = [
 personnel.sort(key= lambda personnel: personnel["name"])
 print(personnel)
 
+lambdaFuncdemo()
+
 ## array.sort() -> changes array
 ## sorted(arr) -> does not

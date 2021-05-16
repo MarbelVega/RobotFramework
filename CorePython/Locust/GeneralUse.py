@@ -3,6 +3,11 @@ import base64
 
 # setup, teardown
 
+'''
+HttpLocust inherits clients which creates http session.
+The same client is returned by self.client in Task set
+'''
+
 def login(l):
     l.client.post('/index.', {'username': 'akulkarni', 'password': 'QC2EVKHP6zs8buE2^pBrNXtz', 'firmid': '822'})
 
@@ -13,7 +18,7 @@ def logout(l):
 
 def quick_search(l):
     payload = {"quick-search-type": "all", "quick-search-query": "test"}
-    with l.client.post('/quicksearch/search', data=payload, catch_response=True) as r:
+    with l.client.post('/search', data=payload, catch_response=True) as r:          # only specify path that comes after host here
         print(r.text)
         verify_text_is_on_page("not what you", r, " search did not work as expected.")
 
@@ -201,7 +206,8 @@ def verify_text_is_on_page(text, page, error_message):
     else:
         page.failure(error_message)
 
-# define tasks here in task set. Use task sequence as needed. 
+# define tasks here as dict with weightage same as @task(1)
+
 class UserBehavior(TaskSet):
     tasks = {
         project_view: 1,
@@ -223,8 +229,10 @@ class UserBehavior(TaskSet):
 
     }
 
+# execute only once
     def on_start(self):
         login(self)
+        # use list of tuples for diff users but ensure no. of users doesn't exceed the swarm no given
 
     def on_stop(self):
         logout(self)
@@ -233,4 +241,5 @@ class UserBehavior(TaskSet):
 # define user
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
-    wait_time = between(5.0, 8.0)
+    wait_time = between(5.0, 8.0)   # wait time between tasks
+
