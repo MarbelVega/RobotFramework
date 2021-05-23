@@ -1,0 +1,74 @@
+#  Test Configuration
+CURRENT_ENVIRONMENT:  Staging  # set this to be the value of your current environment.
+
+Skeleton:  # If you need a custom environment, this one is perfect to modify!
+      service_url: https://some_api_instance.orgdev.com  # Point to your api url!
+      api_keys:
+
+            - valid-api-88-key       
+            - valid-api-77-key-2     # requires firm to be attached
+            - another-api-key-33-33  # requires firm to not be attached
+      default_firmid: 256       # The firm you are running
+
+Production:        # the service url to reach api
+      service_url: https://api.org.com
+      web_url: https://services.org.com
+      auth_url: http://auth-token.org.com:5000/api/Auth
+      mobile_backend: https://mobile-bff.org.com
+
+      api_keys:
+            -  b5c1784f-babb-48a7-bdb7-89e6bbe5e898    
+            -  d939d6e1-8604-4349-a007-e75bef78dadb    
+
+      invalid_api_keys:
+            -  c6bad081-036b-4da0-853c-028e19cbe8cf
+
+      default_firmid: 228
+
+Staging:
+      # the service url to reach api
+      service_url: https://api-cos-qa-current.org.io
+      web_url: https://cos-qa-current.org.io
+      # the authentication service
+      auth_url: https://core.qa-current.org.io/authentication/api/Auth
+      mobile_backend: https://api.qa-current.org.io/mobile
+
+      api_keys:
+            -  dbf97abb-6905-42c7-b645-f8941a225fe7    
+            -  de094430-5141-430f-89a2-6f6468e37903    # requires firm to be attached
+
+      invalid_api_keys:
+            -  c6bad081-036b-4da0-853c-028e19cbe8cf
+
+      default_firmid: 822  
+
+
+QA: # the service url to reach api
+      service_url: https://api-cos-qa-next.org.io
+      web_url: https://cos-qa-next.org.io
+      auth_url: https://core.qa-next.org.io/authentication/api/Auth
+      mobile_backend: https://api.qa-next.org.io/mobile
+
+      api_keys:
+            -  dbf97abb-6905-42c7-b645-f8941a225fe7    
+            -  de094430-5141-430f-89a2-6f6468e37903    # requires firm to be attached
+
+      invalid_api_keys:
+            -  c6bad081-036b-4da0-853c-028e19cbe8cf
+
+      default_firmid: 822  
+
+Dev: # the service url to reach api
+      service_url: https://api-cos-int-current.org.io
+      web_url: https://cos-int-current.org.io
+      auth_url: https://core.int-current.org.io/authentication/api/Auth
+      mobile_backend: https://api.int-current.org.io/mobile
+
+      api_keys:
+            -  dbf97abb-6905-42c7-b645-f8941a225fe7
+            -  de094430-5141-430f-89a2-6f6468e37903
+
+      invalid_api_keys:
+            -  c6bad081-036b-4da0-853c-028e19cbe8cf
+
+      default_firmid: 822

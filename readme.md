@@ -7,3 +7,10 @@ Running robot individual test:
 Running robot filtered with tags:(include/exldue with wildcards)
  
   robot -i regression -e s* TestSuite
+  
+For PyTest:
+
+pytest (all test_ )
+pytest -m "smoke" (tags)
+pytest -s -v (verbose print outputs)
+pytest test.py::class::method
