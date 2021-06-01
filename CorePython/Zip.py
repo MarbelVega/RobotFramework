@@ -1,6 +1,6 @@
 
 
-words = ("FOAM", "ASS", "ANNA");
+words = ("FOAM", "ASS", "ANNA")
 
 arr = [
     ['F', 'A', 'C', 'I'],
@@ -10,7 +10,7 @@ arr = [
     ['R', 'A', 'Z', 'S']
 ]
 
-word1  = "FOAM"
+word1 = "FOAM"
 word2 = "ASSN"
 zippy = zip(word1, word2)
 print(list(zip(*list(zippy))))

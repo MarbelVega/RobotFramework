@@ -2,8 +2,9 @@
 # lambda x: x + 1
 
 def lambdaFuncdemo():
-    product = lambda x, func: x + func(x)
+    def product(x, func): return x + func(x)
     print(product(2, lambda x: x*x))
+
 
 personnel = [
     {
@@ -17,10 +18,31 @@ personnel = [
 ]
 
 # if no key given sort doesn't know which one to sort by
-personnel.sort(key= lambda personnel: personnel["name"])
+personnel.sort(key=lambda personnel: personnel["name"])
 print(personnel)
 
 lambdaFuncdemo()
 
-## array.sort() -> changes array
-## sorted(arr) -> does not
+# this prints all 4 everytime bcoz lambdas you create are referring to the current
+# value of i in the active stack frame so all functions return last value of i(4)
+# i is function here not integer
+
+functions = []
+for i in range(5):
+    functions.append(lambda: i)
+
+for f in functions:
+    print(f())
+
+# fix is functions.append(lambda x, i=i: x+i)
+functions.clear()
+
+for i in range(5):
+    functions.append(lambda i=i: i)
+
+for f in functions:
+    print("Corrected ", f())
+
+
+# array.sort() -> changes array
+# sorted(arr) -> does not

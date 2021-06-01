@@ -3,13 +3,12 @@ print(bin(num)[2:])      # remove  0b from "0b10001"
 
 ret = []
 
-def decimal_to_bin(num):
-    if num >= 1:
-        decimal_to_bin(num // 2)      ## gives whole value after div
-        bin =  num % 2
-        ret.append(bin)
-    return ret
 
+def decimal_to_bin(num):
+    if num > 0:
+        decimal_to_bin(num // 2)  # gives whole value after div
+        ret.append(num % 2)
+    return ret
 
 
 bin_rep = decimal_to_bin(num)

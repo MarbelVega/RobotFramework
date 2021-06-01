@@ -18,6 +18,7 @@ def solution(n):
 
     return sum == n
 
+
 input_nos = input("Tests- ")
 
 for i in range(int(input_nos)):

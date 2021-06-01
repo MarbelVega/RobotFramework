@@ -22,13 +22,11 @@ def binary_search(arr, target, start, end):
 
 
 def get_index(arr):
-    start_idx = 0
     end_idx = len(arr) - 1
     pivot = 0
-    while start_idx < end_idx:
-        if arr[start_idx] > arr[end_idx]:  # n right shift = l-n left shifts
+    while pivot < end_idx:
+        if arr[pivot] > arr[end_idx]:  # n right shift = l-n left shifts
             pivot += 1
-            start_idx += 1
         else:
             print("Rotations :", pivot)
             print(arr[:pivot])
@@ -41,7 +39,8 @@ def get_index(arr):
     if target in (arr[:pivot]):
         index = binary_search(arr[:pivot], target, 0, pivot - 1)
     else:
-        index = pivot + binary_search(arr[pivot:], target, 0, len(arr[pivot:]) - 1)
+        index = pivot + \
+            binary_search(arr[pivot:], target, 0, len(arr[pivot:]) - 1)
 
     print(f"Index of {target} is {index}")
 

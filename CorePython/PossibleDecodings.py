@@ -25,6 +25,7 @@ def solution(digits, n):
 
         # If second last digit is smaller than 2 and last digit is smaller than 7, then
         # last two digits form a valid character
+        # For 12120, count is same as 121 since 0 has to club with 2
 
         if (digits[i - 2] == '1' or
            (digits[i - 2] == '2' and
@@ -34,6 +35,6 @@ def solution(digits, n):
     return count[n]
 
 
-digits = '121'
+digits = '12120'
 n = len(digits)
 print("Count is ", solution(digits, n))

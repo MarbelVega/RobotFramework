@@ -7,14 +7,11 @@
 
 def solution(S):
     checklist = ['AB', 'BA', 'CD', 'DC']
-    found = False
     for item in checklist:
         if item in S:
-            S = S.replace(item,'')
-            found = True
+            S = S.replace(item, '')
             solution(S)
     return S
 
 
 print(solution('AABB'))
-
