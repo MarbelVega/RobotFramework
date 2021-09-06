@@ -8,7 +8,7 @@
 
 
 # --------------------------------LIST---------------------------------------------------------------#
-numbers = list(range(1,21,1))      # list of numbers 1-21
+numbers = list(range(1, 21, 1))      # list of numbers 1-21
 number = [False] * 10     # list of 10 elements
 fruits = ["apple", "mango", "pear", "grape"]
 for val in fruits:
@@ -33,11 +33,12 @@ my_tuple = ("Banana", (1, 2, 3), ["Tokyo", "London"])
 # del my_tuple[2]           cannot add/remove items in tuple but can delete entire tuple
 my_tuple[2][1] = "New York"
 print(my_tuple[1])  # since list is mutable we can change list items in tuple
-print("Banana" in my_tuple )  # contains check
+print("Banana" in my_tuple)  # contains check
 print(tuple(fruits))
 print("--------------------------------SET---------------------------------------------------------------")
 
-my_set = {"Chalk", "Duster", "Board", "pear"}  # unindexed so can't do set[0] etc
+# unindexed so can't do set[0] etc
+my_set = {"Chalk", "Duster", "Board", "pear"}
 my_set.add("Pen")  # not ordered element can get inserted anywhr. same for pop
 my_set.discard("Eraser")  # removes if present, no error if not
 print(my_set)
@@ -47,7 +48,8 @@ set_frm_list = set(fruits)
 print(set_frm_list)
 print("UNION ", my_set.union(set_frm_list))  # my_set | set_frm_list
 print("INTERSECTION ", my_set & set_frm_list)
-print("DIFFERENCE", set_frm_list - my_set, "\n" "SYMMETRIC DIFFERENCE ", my_set ^ set_frm_list)
+print("DIFFERENCE", set_frm_list - my_set,
+      "\n" "SYMMETRIC DIFFERENCE ", my_set ^ set_frm_list)
 
 print("--------------------------------DICT--------------------------------------------------------------")
 
@@ -56,7 +58,7 @@ my_dict = {
     "name": "giraffe",
     "age": 10
 }
-my_dict.update(age = 2)  # add if not present, can also update from another dict
+my_dict.update(age=2)  # add if not present, can also update from another dict
 
 print(my_dict.get("name"))
 print(my_dict.values())

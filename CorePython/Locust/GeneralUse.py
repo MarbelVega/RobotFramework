@@ -8,48 +8,67 @@ HttpLocust inherits clients which creates http session.
 The same client is returned by self.client in Task set
 '''
 
+
 def login(l):
-    l.client.post('/index.', {'username': 'akulkarni', 'password': 'QC2EVKHP6zs8buE2^pBrNXtz', 'firmid': '822'})
+    l.client.post('/index.', {'username': 'akulkarni',
+                  'password': 'QC2EVKHP6zs8buE2^pBrNXtz', 'firmid': '822'})
+
 
 def logout(l):
     l.client.post('/logout.', {'logout': 'true'})
 
 # quick search
 
+
 def quick_search(l):
     payload = {"quick-search-type": "all", "quick-search-query": "test"}
-    with l.client.post('/search', data=payload, catch_response=True) as r:          # only specify path that comes after host here
+    # only specify path that comes after host here
+    with l.client.post('/search', data=payload, catch_response=True) as r:
         print(r.text)
-        verify_text_is_on_page("not what you", r, " search did not work as expected.")
+        verify_text_is_on_page(
+            "not what you", r, " search did not work as expected.")
 
 # view pages
 
+
 def project_view(l):
     with l.client.get('/projects/project_view.?projectID=1213683', catch_response=True) as r:
-        verify_text_is_on_page("published project name", r, "Project View page did not work as expected.")
+        verify_text_is_on_page("published project name",
+                               r, "Project View page did not work as expected.")
+
 
 def opportunity_view(l):
     with l.client.get('/contact/lead_view.?leadid=1930026', catch_response=True) as r:
-        verify_text_is_on_page("stage history", r, "Opportunity View page did not work as expected.")
+        verify_text_is_on_page(
+            "stage history", r, "Opportunity View page did not work as expected.")
+
 
 def company_view(l):
     with l.client.get('/contact/company_view.?CompanyID=2171827', catch_response=True) as r:
         print(r.text)
-        verify_text_is_on_page("Affiliate Contacts", r, "Company View page did not work as expected.")
+        verify_text_is_on_page("Affiliate Contacts", r,
+                               "Company View page did not work as expected.")
+
 
 def personnel_view(l):
     with l.client.get('/templates/glbPersonnel_set_Session.?PersonnelID=1221705', catch_response=True) as r:
-        verify_text_is_on_page("Office Contact Info", r, "Personnel view page did not work as expected.")
+        verify_text_is_on_page("Office Contact Info", r,
+                               "Personnel view page did not work as expected.")
+
 
 def contact_view(l):
     with l.client.get('/contact/contact_view.?individualid=3354631', catch_response=True) as r:
-        verify_text_is_on_page("Affiliate Companies", r, "Contact View did not load.")
+        verify_text_is_on_page("Affiliate Companies", r,
+                               "Contact View did not load.")
+
 
 def lead_view(l):
     with l.client.get('/contact/oppLead_view.?oppleadid=1395253', catch_response=True) as r:
-        verify_text_is_on_page("Associated Events", r, "Lead View did not load.")
+        verify_text_is_on_page("Associated Events", r,
+                               "Lead View did not load.")
 
 # read/write images
+
 
 def view_project_image(l):
     with l.client.get('/projects/projimages/download_full_image.?FileID=KbRP9D9NQBp0jhNDkGqzvZpyNBgg~~&View=true', catch_response=True) as r:
@@ -67,9 +86,10 @@ def view_project_image(l):
 #             r.failure("Did not upload the project image.")
 # grid datas
 
+
 def project_grid_data(l):
     # look into random sorts, random startsWith's, maybe.
-    payload={
+    payload = {
         "sort": "ownerName",
         "dir": "ASC",
         "start": 0,
@@ -78,10 +98,12 @@ def project_grid_data(l):
         "method": "doAction"
     }
     with l.client.post('/com/model/project/projectGridProxy.cfc', data=payload, catch_response=True) as r:
-        verify_grid_data_has_landed(r, "Projects grid data did not return as expected.")
+        verify_grid_data_has_landed(
+            r, "Projects grid data did not return as expected.")
+
 
 def contact_grid_data(l):
-    payload={
+    payload = {
         "sort": "firstname",
         "dir": "ASC",
         "start": 0,
@@ -93,14 +115,18 @@ def contact_grid_data(l):
         "KeyContact": "false"
     }
     with l.client.post('/com/model/contact/contact.cfc?method=getGridData', data=payload, catch_response=True) as r:
-        verify_grid_data_has_landed(r, "Contact grid data did not return as expected.")
+        verify_grid_data_has_landed(
+            r, "Contact grid data did not return as expected.")
+
 
 def index(l):
-    r = l.client.get('/dashboard/widgets/fulltab/client_excellence/details-print.cfm?id=4919797&iFrameMode=false')
+    r = l.client.get(
+        '/dashboard/widgets/fulltab/client_excellence/details-print.cfm?id=4919797&iFrameMode=false')
     print("DB16-TEXAS A&M COOPERATIVE EDUCATION" not in r.text)
 
+
 def lead_grid_data(l):
-    payload={
+    payload = {
         "start": 0,
         "limit": 500,
         "sort": "createdate",
@@ -135,11 +161,13 @@ def lead_grid_data(l):
     }
 
     with l.client.post('/com/model/lead/lead.cfc', data=payload, catch_response=True) as r:
-        verify_grid_data_has_landed(r, "Leads grid data did not return as expected.")
+        verify_grid_data_has_landed(
+            r, "Leads grid data did not return as expected.")
+
 
 def opportunity_grid_data(l):
-    number_of_records = 500 # 25, 50, 100, or 500
-    payload={
+    number_of_records = 500  # 25, 50, 100, or 500
+    payload = {
         "start": 0,
         "limit": number_of_records,
         "action": "getOpportunityGridData",
@@ -167,7 +195,9 @@ def opportunity_grid_data(l):
     }
 
     with l.client.post('/contact/opportunity/oppActions.', data=payload, catch_response=True) as r:
-        verify_grid_data_has_landed(r, "Opportunity grid data did not return as expected.")
+        verify_grid_data_has_landed(
+            r, "Opportunity grid data did not return as expected.")
+
 
 def call_log_grid_data(l):
     payload = {
@@ -175,7 +205,9 @@ def call_log_grid_data(l):
         "xaction": "read"
     }
     with l.client.post('/com/model/activities/callLog.cfc', data=payload, catch_response=True) as r:
-        verify_grid_data_has_landed(r, "Call Log grid data did not return as expected.")
+        verify_grid_data_has_landed(
+            r, "Call Log grid data did not return as expected.")
+
 
 def task_grid_data(l):
     payload = {
@@ -183,13 +215,16 @@ def task_grid_data(l):
         "taskOwnerFilter": 2
     }
     with l.client.post('/com/model/task/task.cfc', data=payload, catch_response=True) as r:
-        verify_grid_data_has_landed(r, "Task grid data did not return as expected.")
+        verify_grid_data_has_landed(
+            r, "Task grid data did not return as expected.")
 
 # reporting engine
 
+
 def report_projects_long_running(l):
     with l.client.get('/reports20/ReportsResults.?ReportID=KbRP9DuUxpeAQ6Cviu8L9dOwYYNA~~&ReportTypeID=1', catch_response=True) as r:
-        verify_text_is_on_page("Report Run Time", r, "Long Running Project Report 1 did not load.")
+        verify_text_is_on_page("Report Run Time", r,
+                               "Long Running Project Report 1 did not load.")
 
 
 # verifies for these simple tests.
@@ -200,6 +235,7 @@ def verify_grid_data_has_landed(page, error_message):
     else:
         page.failure(error_message)
 
+
 def verify_text_is_on_page(text, page, error_message):
     if text.lower() in page.text.lower():
         page.success()
@@ -207,6 +243,7 @@ def verify_text_is_on_page(text, page, error_message):
         page.failure(error_message)
 
 # define tasks here as dict with weightage same as @task(1)
+
 
 class UserBehavior(TaskSet):
     tasks = {
@@ -242,4 +279,3 @@ class UserBehavior(TaskSet):
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
     wait_time = between(5.0, 8.0)   # wait time between tasks
-

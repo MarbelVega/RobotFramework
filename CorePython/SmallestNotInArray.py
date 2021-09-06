@@ -15,20 +15,23 @@ def solution(A):
     # we could also convert the array to set for getting unique count
     A_set = set(A)
     print(A_set)
-    while(i <= len(A)):
+    while(True):
         if i not in A:
             break
         else:
             i = i + 1
     return i
 
+
 def alternate(A):
-    set1 = set(range(1,max(A) + 1,1))
+    set1 = set(range(1, max(A) + 2, 1))
+    print(set1)
     set2 = set(A)
     diff = set1 - set2
     print(min(diff))
 
-A = [1, 3, 6, 4, 1, 2]
+
+A = [1, 3, 6, 4, 5, 2]
 smallest = solution(A)
 print(smallest)
 alternate(A)

@@ -1,3 +1,33 @@
+'''
+REVERSE ARRAY WITHOUT SPECIAL CHARS
+Input str = 'a,b$c' 
+Output = 'c,b$a'
+Only reverse chars and not $ and ,
+'''
+
+
+given_str = "Ab,c,de!$"
+list_str = list(given_str)
+
+length = len(given_str)
+start = 0
+
+while start < length:
+    if list_str[start].isalnum():
+        temp = list_str[start]
+
+        while(True):
+            length -= 1
+            if list_str[length].isalnum():
+                list_str[start] = list_str[length]
+                list_str[length] = temp
+                break
+
+    start = start + 1
+
+print("".join(list_str))
+
+
 py_string = 'Python'
 # start(def=0), stop(def=length), step - stop index is not included
 slice_obj = slice(1, len(py_string) - 1, 1)

@@ -1,0 +1,2 @@
+pip install pytest-xdist
+pytest -n 5 (5 threads)

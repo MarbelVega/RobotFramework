@@ -14,4 +14,4 @@ def solution(S):
     return S
 
 
-print(solution('AABB'))
+print(solution('CBACD'))

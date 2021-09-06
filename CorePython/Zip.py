@@ -13,6 +13,7 @@ arr = [
 word1 = "FOAM"
 word2 = "ASSN"
 zippy = zip(word1, word2)
+print(list(zippy))
 print(list(zip(*list(zippy))))
 
 # if iterables are in another iterable unpack unzip with * operator
