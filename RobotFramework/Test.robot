@@ -71,3 +71,16 @@ INDEPENDANT KEYWORDS
     ${cookie}=     get cookie
     log     ${cookie.name}      ${cookie.domain}
     go to   ${host}/maps
+
+Verify Evaluate
+    ${1}    Set Variable    Hello
+    ${2}    Set Variable    HERE
+    ${3}    Set Variable    ${1}-${2}
+    ${4}    Evaluate    "${1}" + " world"
+    ${5}    Generate Random String    20    [LETTERS][NUMBERS][UPPER][LOWER]
+    Log To Console  ${3}
+    
+    Log To Console  ${5}
+    ${username} =	Get Value From User	Input user name	default
+    ${password} =	Get Value From User	Input password	hidden=yes
+    Log To Console  ${username}    
