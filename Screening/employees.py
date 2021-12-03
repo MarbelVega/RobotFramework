@@ -2,6 +2,8 @@ import pytest
 import requests
 import yaml
 
+CURRENT_ENV = "PRODUCTION"
+# Ideally env will be a runtime parameter
 request_header = {"Accept": "application/json", "User-Agent": "XYZ"}
 
 @pytest.fixture
@@ -12,7 +14,7 @@ def setup_url():
     '''
     with open("environment_config.yml") as file:
         cfg = yaml.load(file, Loader=yaml.FullLoader)
-    employee_endpoint  = cfg['PRODUCTION']['service_url'] + '/api/v1/employees'
+    employee_endpoint  = cfg[CURRENT_ENV]["service_url"] + "/api/v1/employees"
     return employee_endpoint
    
 @pytest.mark.employee
@@ -22,6 +24,6 @@ def test_PrintEmployeeNameAge(setup_url):
     '''
     response = requests.get(url = setup_url, headers= request_header)
     assert response.status_code == 200
-    for employee_data in response.json()['data']:
-        print(employee_data['employee_name'] , "\n" ,  employee_data['employee_age'])
+    for employee_data in response.json()["data"]:
+        print(employee_data["employee_name"] , "\n" ,  employee_data["employee_age"])
 
