@@ -3,6 +3,7 @@
 
 *** Settings ***
 Library    SeleniumLibrary
+Library     String
 
 Suite Setup    Log    I'm inside test suite setup 
 Suite Teardown     Log    I'm inside test suite teardown
@@ -29,6 +30,15 @@ FirstSeleniumCase
     Press Keys    None      ENTER
     #Click Button    name=btnK
     Close Browser
+
+
+Amit
+     ${v1}    Set Variable    0.01
+     Should be true     ${v1} > 0   
+    FOR    ${i}    IN RANGE    50 
+        ${ret} =	Evaluate	random.randint(1, 2)
+        log to Console     ${ret}
+    END
 #
 #
 #
@@ -83,4 +93,11 @@ Verify Evaluate
     Log To Console  ${5}
     ${username} =	Get Value From User	Input user name	default
     ${password} =	Get Value From User	Input password	hidden=yes
-    Log To Console  ${username}    
+    Log To Console  ${username}    ""
+
+
+*** Test Cases ***
+Regexp Test 
+    ${name}     Set Variable    Administration
+    ${escaped} 	Regexp Escape	${name}
+    Log To Console      ${escaped}

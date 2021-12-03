@@ -22,7 +22,7 @@ for i in range(variable_int):
     elif i % 17 == 0:
         print("hurray prime")
 
-print(arr)
+print(f"ARRAY - {arr}")
 print("MAX ELEMENT", max(arr), "ARRAY LENGTH", len(arr))
 
 print('ASCII Code -', ord('c'))  # chr(number) to get back

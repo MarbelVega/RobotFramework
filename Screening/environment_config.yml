@@ -1,0 +1,10 @@
+#  Test Configuration
+
+PRODUCTION:        # the service url to reach api
+      service_url: http://dummy.restapiexample.com
+
+
+STAGING:        # the service url to reach api
+      service_url: http://dummy-stg.restapiexample.com
+
+  

@@ -1,0 +1,62 @@
+Instructions for running - 
+Run from cmd line "pytest -s -v --disable-warnings .\employees.py"
+
+Sample output
+============================================== test session starts ============================================
+platform win32 -- Python 3.9.6, pytest-6.2.5, py-1.10.0, pluggy-1.0.0 -- c:\users\akulkarni\appdata\local\programs\python\python39\python.exe
+cachedir: .pytest_cache
+rootdir: C:\PersonalGit\PyTest\Screening
+plugins: Faker-8.12.1
+collected 1 item
+
+employees.py::test_PrintEmployeeNameAge Tiger Nixon 
+ 61
+Garrett Winters 
+ 63
+Ashton Cox
+ 66
+Cedric Kelly
+ 22
+Airi Satou
+ 33
+Brielle Williamson
+ 61
+Herrod Chandler
+ 59
+Rhona Davidson
+ 55
+Colleen Hurst
+ 39
+Sonya Frost
+ 23
+Jena Gaines
+ 30
+Quinn Flynn
+ 22
+Charde Marshall
+ 36
+Haley Kennedy
+ 43
+Tatyana Fitzpatrick
+ 19
+Michael Silva
+ 66
+Paul Byrd
+ 64
+Gloria Little
+ 59
+Bradley Greer
+ 41
+Dai Rios
+ 35
+Jenette Caldwell
+ 30
+Yuri Berry
+ 40
+Caesar Vance
+ 21
+Doris Wilder
+ 23
+PASSED
+
+=========================================== 1 passed, 1 warning in 1.16s =========================================== 
