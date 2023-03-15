@@ -14,3 +14,5 @@ pytest (all test_ )
 pytest -m "smoke" (tags)
 pytest -s -v (verbose print outputs)
 pytest test.py::class::method
+
+link: https://www.youtube.com/watch?v=z9eCIx49OHQ
